@@ -18,12 +18,13 @@
         </p>
     </form>
 
-    <form action="proses.php" method="GET">
+    <form action="index.php" method="GET">
 
     <? // mulai skrip php
     // ambil nilai yang telah dikirim 
     $inputData = $_GET[inputData];
     $jdata = $_GET[jdata];
+
 
     if ($inputData) {
         // lakukan pengulangan sebanyak data yang akan dimasukan
@@ -34,12 +35,23 @@
                     </p>
             "; // akhir echo
         } // akhir pengulangan
-    } //akhir kondisi    
+
+        echo "
+        <p>Pilih Operasi: 
+            <select name='operasi'> <!-- misalny kita bikin opsi satu dahulu untuk rata-rata -->
+                <option value='rata-rata'>Rata - Rata</option>
+            </select>
+        </p>
+        <p>
+            <input type='submit' name='proses' value='proses'>
+        </p>
+        </form>
+        ";
+    } //akhir kondisi inputData
+
     ?>
-            <p>
-                <input type="submit" name="proses" value="proses">
-            </p>
-    </form>
+            
+    
 
 </body>
 
