@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title>Aplikasi Statistika Sederhana</title>
-</head>
-
-<body>
-    <h1>Aplikasi Statistika Sederhana</h1>
+    <h1>Aplikasi Statistikaa Sederhana</h1>
 
     <!-- banyak input datanya-->
     <from action="index.php" method="GET">
@@ -27,7 +20,3 @@
         echo $inputData;
     }       
     ?>
-
-</body>
-
-</html>
