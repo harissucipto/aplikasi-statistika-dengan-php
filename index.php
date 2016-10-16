@@ -18,7 +18,7 @@
         </p>
     </form>
 
-    <form action="index.php" method="GET">
+    <form action="proses.php" method="GET">
 
     <? // mulai skrip php
     // ambil nilai yang telah dikirim 
@@ -43,6 +43,7 @@
             </select>
         </p>
         <p>
+            <input type='hidden' name='banyakData' value='$jdata'>
             <input type='submit' name='proses' value='proses'>
         </p>
         </form>
