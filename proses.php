@@ -67,3 +67,7 @@ echo  "
     <p><a href='index.php'>Kembali ke Menu</a></p>
 ";
 
+?>
+
+</body>
+</html>
