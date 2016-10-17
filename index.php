@@ -39,7 +39,7 @@
         echo "
         <p>Pilih Operasi: 
             <select name='operasi'> <!-- misalny kita bikin opsi satu dahulu untuk rata-rata -->
-                <option value='rata-rata'>Rata - Rata</option>
+                <option value='rata-rata'>Rata - Rata</option> <!-- silahkan tambahkan opsi sendiri -->
             </select>
         </p>
         <p>
@@ -50,10 +50,7 @@
         ";
     } //akhir kondisi inputData
 
-    ?>
-            
-    
-
+    ?>    
 </body>
 
 </html>
