@@ -124,6 +124,8 @@ if ($modus == "modus") {
     sort($filterhasilModus);
     $nilaiPalinTinggi = sizeof($filterhasilModus) - 1;
 
+
+    // cetak modus.
     if ($filterhasilModus[$nilaiPalinTinggi] > 1) {
         for ($i = 0; $i < sizeof($banyakPer); $i++) {
                 if ($filterhasilModus[$nilaiPalinTinggi] == $banyakPer[$i]) {
@@ -141,7 +143,7 @@ if ($modus == "modus") {
          }
          echo "<br>";
     }  else {
-        echo "tidak ada modus";
+        echo "tidak ada modus di data ini";
     }
     
     /*
