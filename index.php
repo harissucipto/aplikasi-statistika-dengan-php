@@ -42,7 +42,7 @@
                 <option value='pilihan'>Pilih Operasi</option>
                 <option value='mean'>1. Mean / Rata - Rata</option>
                 <option value='median'>2. Median</option>
-                <option value='modus'>3. Mdus</option>
+                <option value='modus'>3. Modus</option>
                 <option value='varians'>4. Varians</option>
                 <option value='standar-deviasi'>5. Standar Deviasi</option>
                 <option value='sort-asc'>6. Sort-asc</option>

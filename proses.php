@@ -8,10 +8,13 @@
 <h1>Aplikasi Statistika Sederhana</h1>
 
 <?
+// banyakdata itu namalain dari jumlahData.
 // defeniskan variabel
+$banyakData = $_GET[banyakData];
 $rataRata = $_GET[operasi];
 $median = $_GET[operasi];
-$banyakData = $_GET[banyakData];
+$modus = $_GET[operasi];
+
 // karena datanya banyak kita bikin jadi satu dengan array;
 $data = [];
 ?>
@@ -52,31 +55,62 @@ if ($rataRata == "mean") {
     // baru masuakan rumus
 
     $hasilRatarata = $jumKesData / $banyakData;
+    $outputMean = number_format($hasilRatarata, 2);
 
     // cetak
     echo "
         <p>Anda Memilih operasi <b>Mean / Rata - Rata data </b></p>
         <p>jumlah Data / banyak Data = <b>Rata - Rata</b><p>
-        <p> <b> $jumKesData / $banyakData = $hasilRatarata</b> </p>
+        <p> <b> $jumKesData / $banyakData = $outputMean</b> </p>
 
-        <p>Jadi <b>Rata - rata</b> nya adalah <b>$hasilRatarata</b></p>
+        <p>Jadi <b>Rata - rata</b> nya adalah <b>$outputMean</b></p>
     ";
 
 } // end rata -rata / mean
 
 if ($median == "median") {
+    echo "anda memilih median";
     // sorting dulu sebelum melakukan operasi
     $susun = $data;
     $hasilMedian;
     sort($susun);
 
-    if ($banyakData % 2 == 0) { // jika genap 
+    if ($banyakData % 2 == 0) { // jika jumlahData genap 
+        $medianproses1 = (sizeof($susun) / 2) - 1; // dikurang 1 dikarenakan index mulai dari 0
+        $medianproses2 = $medianproses1 + 1;
+        $hasilMedian = ($susun[$medianproses1] + $susun[$medianproses2]) / 2;
+        $outputMedian = number_format($hasilMedian, 2);
+        echo "mediannya adalah $outputMedian";
         
-    } else {
-        $hasilMedian = (sizeof($susun) + 1) / 2;
+    } else { // jika jumlahData ganjil
+        $hasilMedian = ((sizeof($susun) + 1) / 2) - 1; // dikurang 1 dikarenakan index mulai dari 0
+         $outputMedian = number_format($susun[$hasilMedian], 2);
+         echo "mediannya adalah $outputMedian"; 
     }
 
-    echo "mediannya adalah $susun[$hasilMedian]";
+}
+
+if ($modus == "modus") {
+
+    $salin = $data;
+    sort($salin);
+    $i = 0;
+    $index = 0;
+    $arrayBaru = [];
+    for ($x = 1; $x <= sizeof($salin); $x++) {
+        if ($salin[$i] != $salin[$x]) {
+	        $arrayBaru[$index] = $salin[$i];
+            $index++;
+	    } 
+        $i++;
+    }
+
+    for ($x = 0; $x < sizeof($arrayBaru); $x++) {
+        echo $arrayBaru[$x];
+    }
+
+    
+    
 }
 
 
