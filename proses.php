@@ -45,7 +45,7 @@ if ($rataRata == "mean") {
     $hasilRatarata = 0;
 
     // lakukan looping untuk mencari jumlah keselurahan data
-    for ($i = 1; $i <= $banyakData; $i++) {
+    for ($i = 1; $i <= sizeof($data); $i++) {
         $jumKesData += $data[$i];
     }
 
@@ -65,9 +65,19 @@ if ($rataRata == "mean") {
 } // end rata -rata / mean
 
 if ($median == "median") {
+    // sorting dulu sebelum melakukan operasi
+    $susun = $data;
+    $hasilMedian;
+    sort($susun);
 
+    if ($banyakData % 2 == 0) { // jika genap 
+        
+    } else {
+        $hasilMedian = (sizeof($susun) + 1) / 2;
+    }
+
+    echo "mediannya adalah $susun[$hasilMedian]";
 }
-
 
 
 echo  "
