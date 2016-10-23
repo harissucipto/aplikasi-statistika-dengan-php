@@ -88,7 +88,7 @@ if ($median == "median") {
          echo "mediannya adalah $outputMedian"; 
     }
 
-}
+} // akhir operasi median.
 
 if ($modus == "modus") {
 
@@ -117,8 +117,35 @@ if ($modus == "modus") {
         $banyakPer[$i] = $tambah;
     }
 
+    // cari banyakPer yang palingtinggi nilainya berati modus.
+    $filterhasilModus = $banyakPer;
+    $hasilModus = [];
+    $indexModus = 0;
+    sort($filterhasilModus);
+    $nilaiPalinTinggi = sizeof($filterhasilModus) - 1;
 
-
+    if ($filterhasilModus[$nilaiPalinTinggi] > 1) {
+        for ($i = 0; $i < sizeof($banyakPer); $i++) {
+                if ($filterhasilModus[$nilaiPalinTinggi] == $banyakPer[$i]) {
+                    $hasilModus[$indexModus] = $arrayBaru[$i];
+                    $indexModus++;
+                }
+         }
+         echo "Modusnya yaitu: ";
+         for ($i = 0; $i < sizeof($hasilModus); $i++) {
+             if ($i == (sizeof($hasilModus) - 1)) {
+                 echo number_format($hasilModus[$i], 2)  . " .";
+             } else {
+                 echo number_format($hasilModus[$i], 2)  . " , ";
+             }
+         }
+         echo "<br>";
+    }  else {
+        echo "tidak ada modus";
+    }
+    
+    /*
+    // pengujian
     for ($x = 0; $x < sizeof($arrayBaru); $x++) {
         echo $arrayBaru[$x];
     }
@@ -127,9 +154,8 @@ if ($modus == "modus") {
         echo $banyakPer[$x];
     }
 
-    
-    
-}
+    */
+} // akhiri operasi modus
 
 
 echo  "
