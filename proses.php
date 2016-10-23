@@ -92,6 +92,7 @@ if ($median == "median") {
 
 if ($modus == "modus") {
 
+    // cari kelasnya dulu
     $salin = $data;
     sort($salin);
     $i = 0;
@@ -104,9 +105,26 @@ if ($modus == "modus") {
 	    } 
         $i++;
     }
+    $banyakPer = [];
+    // cari banyak data tiap kelas
+    for ($i = 0; $i < sizeof($arrayBaru); $i++) {
+        $tambah = 0;
+        for ($x = 0; $x < sizeof($salin); $x++) {
+            if ($arrayBaru[$i] == $salin[$x]) {
+                $tambah+= 1;
+            }
+        }
+        $banyakPer[$i] = $tambah;
+    }
+
+
 
     for ($x = 0; $x < sizeof($arrayBaru); $x++) {
         echo $arrayBaru[$x];
+    }
+    echo "<br>banyak data</br>";
+    for ($x = 0; $x < sizeof($arrayBaru); $x++) {
+        echo $banyakPer[$x];
     }
 
     
