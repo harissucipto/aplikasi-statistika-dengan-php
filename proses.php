@@ -10,6 +10,7 @@
 <?
 // defeniskan variabel
 $rataRata = $_GET[operasi];
+$median = $_GET[operasi];
 $banyakData = $_GET[banyakData];
 // karena datanya banyak kita bikin jadi satu dengan array;
 $data = [];
@@ -32,7 +33,7 @@ for ($i = 1; $i <= $banyakData; $i++) {
 echo "</b></p>";
 
 // jika memilih operasi rata - rata;
-if ($rataRata) {
+if ($rataRata == "mean") {
 
     // rumus rata - rata adalah jumlah keseulurahan data dibagi
     // banyak data, jadi kita harus mendefensikan 3 variabel yakni
@@ -54,14 +55,20 @@ if ($rataRata) {
 
     // cetak
     echo "
-        <p>Anda Memilih operasi <b>Rata - Rata data </b></p>
+        <p>Anda Memilih operasi <b>Mean / Rata - Rata data </b></p>
         <p>jumlah Data / banyak Data = <b>Rata - Rata</b><p>
         <p> <b> $jumKesData / $banyakData = $hasilRatarata</b> </p>
 
         <p>Jadi <b>Rata - rata</b> nya adalah <b>$hasilRatarata</b></p>
     ";
 
+} // end rata -rata / mean
+
+if ($median == "median") {
+
 }
+
+
 
 echo  "
     <p><a href='index.php'>Kembali ke Menu</a></p>

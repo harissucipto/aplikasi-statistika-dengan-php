@@ -26,7 +26,7 @@
     $jdata = $_GET[jdata];
 
 
-    if ($inputData) {
+    if ($inputData && $jdata > 0) {
         // lakukan pengulangan sebanyak data yang akan dimasukan
         for ($i = 1; $i <= $jdata; $i++) { 
             echo "
@@ -39,7 +39,19 @@
         echo "
         <p>Pilih Operasi: 
             <select name='operasi'> <!-- misalny kita bikin opsi satu dahulu untuk rata-rata -->
-                <option value='rata-rata'>Rata - Rata</option> <!-- silahkan tambahkan opsi sendiri -->
+                <option value='pilihan'>Pilih Operasi</option>
+                <option value='mean'>1. Mean / Rata - Rata</option>
+                <option value='median'>2. Median</option>
+                <option value='modus'>3. Mdus</option>
+                <option value='varians'>4. Varians</option>
+                <option value='standar-deviasi'>5. Standar Deviasi</option>
+                <option value='sort-asc'>6. Sort-asc</option>
+                <option value='sort-desc'>7. Sort-desc</option>
+                <option value='min-max'>8. Min-Max</option>
+                <option value='quartil'>9. Quartil</option>
+                <option value='desil'>10. Desil</option>
+                <option value='prsentil'>11. Prsentil</option>
+                <option value='grafik'>12. Grafik</option>
             </select>
         </p>
         <p>
