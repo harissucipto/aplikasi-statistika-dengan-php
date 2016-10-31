@@ -17,6 +17,8 @@ $modus = $_GET[operasi];
 $varians = $_GET[operasi];
 $simpanganbaku = $_GET[operasi];
 $sortingAsc = $_GET[operasi];
+$sortingDsc = $_GET[operasi];
+$minmax = $_GET[operasi];
 
 // karena datanya banyak kita bikin jadi satu dengan array;
 $data = [];
@@ -216,7 +218,7 @@ if ($sortingAsc == "sort-asc") {
         $salin[$i] = $data[$i];
     }
     sort($salin);
-    echo " hasil sorting : ";
+    echo " hasil sorting ASC: ";
 
     for ($i = 0; $i < sizeof($data); $i++) {
         echo $salin[$i];
@@ -226,6 +228,43 @@ if ($sortingAsc == "sort-asc") {
             echo ".";
         }
     }
+
+}
+
+if ($sortingDsc == "sort-desc") {
+    $hasilSortingDsc;
+    for ($i = 1; $i <= sizeof($data); $i++) {
+        $hasilSortingDsc[$i] = $data[$i];
+    }
+    sort($hasilSortingDsc);
+    $hasilSortingDsc= array_reverse($hasilSortingDsc);
+    echo " hasil sorting DSC: ";
+
+    for ($i = 0; $i < sizeof($data); $i++) {
+        echo $hasilSortingDsc[$i];
+        if ($i < ($banyakData - 1)) {
+            echo " , ";
+        } else {
+            echo ".";
+        }
+    }
+
+}
+
+if ($minmax == "min-max") {
+    $x = 0;
+    $arraySalin;
+    for ($i = 1; $i <= sizeof($data); $i++) {
+        if ($i >= 1) {
+            $arraySalin[$x] = $data[$i];
+            $x++;
+        }
+    }
+    sort($arraySalin);
+    $hasilMin = $arraySalin[0];
+    $hasilMax = $arraySalin[$banyakData - 1];
+    echo "NIlai Min : " . $hasilMin;
+    echo "<br>Nilai Max: " . $hasilMax;
 
 }
 
