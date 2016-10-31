@@ -14,6 +14,7 @@ $banyakData = $_GET[banyakData];
 $rataRata = $_GET[operasi];
 $median = $_GET[operasi];
 $modus = $_GET[operasi];
+$varians = $_GET[operasi];
 
 // karena datanya banyak kita bikin jadi satu dengan array;
 $data = [];
@@ -159,6 +160,31 @@ if ($modus == "modus") {
     */
 } // akhiri operasi modus
 
+// jika operasi varians
+if ($varians == "varians") {
+    // cari rata - rata
+
+    $jumKesData = 0;
+    $hasilRatarata = 0;
+    // lakukan looping untuk mencari jumlah keselurahan data
+    for ($i = 1; $i <= sizeof($data); $i++) {
+        $jumKesData += $data[$i];
+    }
+    // baru masuakan rumus
+    $hasilRatarata = $jumKesData / $banyakData;
+
+    $proses1 = 0;
+    for ($i = 1; $i <= sizeof($data); $i++) {
+        $temp = $data[$i] - $hasilRatarata;
+        $temp = $temp * $temp;
+        $proses1 += $temp;
+    }
+    
+    $hasilnya = $proses1 / 7;
+    echo "hasil varinsinya " .  number_format($hasilnya, 2);
+    
+
+}
 
 echo  "
     <p><a href='index.php'>Kembali ke Menu</a></p>
