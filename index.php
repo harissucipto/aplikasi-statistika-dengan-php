@@ -45,13 +45,14 @@
                 <option value='modus'>3. Modus</option>
                 <option value='varians'>4. Varians</option>
                 <option value='standar-deviasi'>5. Standar Deviasi</option>
-                <option value='sort-asc'>6. Sort-asc</option>
-                <option value='sort-desc'>7. Sort-desc</option>
-                <option value='min-max'>8. Min-Max</option>
-                <option value='quartil'>9. Quartil</option>
-                <option value='desil'>10. Desil</option>
-                <option value='prsentil'>11. Prsentil</option>
-                <option value='grafik'>12. Grafik</option>
+                <option value='simpangan-baku'>6. Simpangan baku</option>
+                <option value='sort-asc'>7. Sort-asc</option>
+                <option value='sort-desc'>8. Sort-desc</option>
+                <option value='min-max'>9. Min-Max</option>
+                <option value='quartil'>10. Quartil</option>
+                <option value='desil'>11. Desil</option>
+                <option value='prsentil'>12. Prsentil</option>
+                <option value='grafik'>13. Grafik</option>
             </select>
         </p>
         <p>
