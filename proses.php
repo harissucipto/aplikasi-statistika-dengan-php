@@ -16,6 +16,7 @@ $median = $_GET[operasi];
 $modus = $_GET[operasi];
 $varians = $_GET[operasi];
 $simpanganbaku = $_GET[operasi];
+$sortingAsc = $_GET[operasi];
 
 // karena datanya banyak kita bikin jadi satu dengan array;
 $data = [];
@@ -206,6 +207,25 @@ if ($simpanganbaku == "simpangan-baku") {
     
     $hasilSimpanganBaku= sqrt($proses1 / 7);
     echo "hasil simpangan baku yaitu " .  number_format($hasilSimpanganBaku, 2);
+
+}
+
+if ($sortingAsc == "sort-asc") {
+    $salin;
+    for ($i = 1; $i <= sizeof($data); $i++) {
+        $salin[$i] = $data[$i];
+    }
+    sort($salin);
+    echo " hasil sorting : ";
+
+    for ($i = 0; $i < sizeof($data); $i++) {
+        echo $salin[$i];
+        if ($i < ($banyakData - 1)) {
+            echo " , ";
+        } else {
+            echo ".";
+        }
+    }
 
 }
 
