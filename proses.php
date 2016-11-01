@@ -19,6 +19,9 @@ $simpanganbaku = $_GET[operasi];
 $sortingAsc = $_GET[operasi];
 $sortingDsc = $_GET[operasi];
 $minmax = $_GET[operasi];
+$quartil = $_GET[operasi];
+
+
 
 // karena datanya banyak kita bikin jadi satu dengan array;
 $data = [];
@@ -266,6 +269,44 @@ if ($minmax == "min-max") {
     echo "NIlai Min : " . $hasilMin;
     echo "<br>Nilai Max: " . $hasilMax;
 
+}
+
+if ($quartil == "quartil") {
+    $x = 0;
+    $arraySalin;
+   
+    for ($i = 1; $i <= sizeof($data); $i++) {
+        if ($i >= 1) {
+            $arraySalin[$x] = $data[$i];
+            $x++;
+        }
+    }
+
+    sort($arraySalin);
+    $tempBanyakData = sizeof($arraySalin);
+    echo $tempBanyakData . " ";
+
+    if ($banyakData % 2 != 0) {
+        $hasilQ1 = $arraySalin[(($tempBanyakData + 1)/4) - 1];
+        $hasilQ2 = $arraySalin[(2 * ($tempBanyakData + 1) / 4) - 1];
+        $hasilQ3 = $arraySalin[(3 * ($tempBanyakData + 1) / 4) - 1];
+
+
+        echo "hasil quartil ke 1 = " . number_format($hasilQ1, 2);
+        echo "<br>hasil quartl ke 2 = " . number_format($hasilQ2, 2);
+        echo "<br>hasil quartil ke 3 = " . number_format($hasilQ3, 2);
+
+        
+    } else {
+        $hasilQ1 = (($arraySalin[(($tempBanyakData - 1)/4)] + $arraySalin[(($tempBanyakData + 3)/4)]) / 2)  ;
+        $hasilQ2 = ($arraySalin[($tempBanyakData / 2) - 1] + $arraySalin[($tempBanyakData / 2 + 1) - 1]) /2;
+        $hasilQ3 = ($arraySalin[((3 * $tempBanyakData + 1) / 4) - 1]  + $arraySalin[((3 * $tempBanyakData + 5) / 4) - 1]) / 2;
+
+
+        echo "hasil quartil ke 1 = " . number_format($hasilQ1, 2);
+        echo "<br>hasil quartl ke 2 = " . number_format($hasilQ2, 2);
+        echo "<br>hasil quartil ke 3 = " . number_format($hasilQ3, 2);
+    }
 }
 
 echo  "
