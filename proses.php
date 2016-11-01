@@ -286,10 +286,10 @@ if ($quartil == "quartil") {
     $tempBanyakData = sizeof($arraySalin);
     echo $tempBanyakData . " ";
 
-    if ($banyakData % 2 != 0) {
-        $hasilQ1 = $arraySalin[((($tempBanyakData /4) +  1/ 2))];
-        $hasilQ2 = $arraySalin[(2 * ($tempBanyakData + 1) / 4) - 1];
-        $hasilQ3 = $arraySalin[((3 * $tempBanyakData / 4) + 1/ 2) - 1];
+    if ($tempBanyakData % 2 != 0) {
+        $hasilQ1 = $arraySalin[((1 * ($tempBanyakData  + 1)) / 4) - 1];
+        $hasilQ2 = $arraySalin[((2 * ($tempBanyakData  + 1)) / 4) - 1];
+        $hasilQ3 = $arraySalin[((3 * ($tempBanyakData  + 1)) / 4) - 1];
 
 
         echo "hasil quartil ke 1 = " . number_format($hasilQ1, 2);
@@ -298,7 +298,7 @@ if ($quartil == "quartil") {
 
         
     } else {
-        $hasilQ1 =  ($arraySalin[($tempBanyakData / 4) - 1] + $arraySalin[(($tempBanyakData / 4) + 1)- 1]) / 2;
+       
         $hasilQ2 = ($arraySalin[($tempBanyakData / 2) - 1] + $arraySalin[($tempBanyakData / 2 + 1) - 1]) /2;
         $hasilQ3 = ($arraySalin[(3 * $tempBanyakData  / 4) - 1] + $arraySalin[((3 * $tempBanyakData  / 4)+ 1) - 1]) / 2;
 
