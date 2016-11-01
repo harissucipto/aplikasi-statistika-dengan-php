@@ -203,8 +203,18 @@ function hitungKuartil($datanya) {
             $kuartil[1] = $datanya[( (2 * ($hBanyakData + 1) ) / 4) - 1];
             $kuartil[2] = (($datanya[ ( ((3 * $hBanyakData) + 1) / 4) - 1] + $datanya[ (((3 * $hBanyakData) + 5) / 4) -1])) / 2;
         }
+    } else {
+        if ($hBanyakData % 4 == 0) {
+            echo "disni";
+            $kuartil[0] = ($datanya[(($hBanyakData + 3) / 4) - 1] + $datanya[(($hBanyakData + 4) / 4) - 1]) / 2;
+            $kuartil[1] = ($datanya[ (2 * ($hBanyakData + 1) / 4) - 1] + $datanya[ (2 * ($hBanyakData + 1) / 4)]) / 2;
+            $kuartil[2] = ($datanya[ ( (3 * $hBanyakData + 2) / 4 ) - 1] + $datanya[ ( (3 * $hBanyakData + 2) / 4 )]) / 2;
+        } else {
+            $kuartil[0] = $datanya[(($hBanyakData + 2) / 4) - 1];
+            $kuartil[1] = ( $datanya[ ($hBanyakData / 2) - 1] + $datanya[ ($hBanyakData / 2 + 1) - 1] ) / 2;
+            $kuartil[2] = $datanya[ ( (3 * $hBanyakData + 2) / 4 ) - 1];
+        }
     }
-
     return $kuartil;
 }
 
