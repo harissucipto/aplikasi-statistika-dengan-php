@@ -6,19 +6,30 @@
 </head>
 
 <body>
+    <?
+        $x = $_GET[jdata];
+
+    ?>
     <h1>Aplikasi Statistika Sederhana</h1>
 
     <!-- banyak input datanya-->
     <form action="index.php" method="GET">
         <p>Jumlah Data
-            <input type="text" name="jdata">
+            <?
+            if ($x) {
+                echo "<input type='text' name='jdata' value='$x'>";
+            } else {
+                echo "<input type='text' name='jdata'>";
+            }
+
+            ?>
         </p>
         <p>
             <input type="submit" name="inputData" value="Masukan">
         </p>
     </form>
 
-    <form action="proses2.php" method="GET">
+    <form action="proses3.php" method="GET">
 
     <? // mulai skrip php
     // ambil nilai yang telah dikirim 
