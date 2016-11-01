@@ -145,15 +145,64 @@ function hitungModus($datanya) {
     return $modusnya;
 }
 
+function hitungVarians($datanya) {
+    $hasilRata = hitungMean($datanya);
+    $jumlahTotalPangkat = 0;
+    for ($i = 0; $i < sizeof($datanya); $i++) {
+        $temp1 = $datanya[$i] - $hasilRata;
+        $temp1 = $temp1 * $temp1;
+        $jumlahTotalPangkat += $temp1;
+    }
+    return $jumlahTotalPangkat / sizeof($datanya);
+}
+
+
+function hitungSimpanganBaku($datanya) {
+    return sqrt(hitungVarians($datanya));
+}
+
+function salinArray($datanya) {
+    $lokasinya;
+    for ($i = 0; $i < sizeof($datanya); $i++) {
+        $lokasinya[$i] = $datanya[$i];
+    }
+    return $lokasinya;
+}
+
+function hitungSortAsc($datanya) {
+    $salinData = salinArray($datanya);
+    sort($salinData);
+    return $salinData;
+}
+
+function hitungSortDsc($datanya) {
+    $salinData = salinArray($datanya);
+    sort($salinData);
+    $salinData = array_reverse($salinData);
+    return $salinData;
+}
+
+function hitungMinum($datanya) {
+    return min($datanya);
+}
+
+function hitungMaximum($datanya) {
+    return max($datanya);
+}
 
 
 
-
+echo "<br>";
 // pembuktian
-echo "<br>nilai rata - rata" . number_format(hitungMean($dataTerurut), 2);
-echo "<br>nilai Median" . number_format(hitungMedian($dataTerurut), 2). "<br>";
-$hasilke = hitungModus($dataTerurut);
-cetakArray($hasilke, "modusnya");
+echo "nilai rata - rata" . number_format(hitungMean($dataTerurut), 2) . "<br>";
+echo "nilai Median" . number_format(hitungMedian($dataTerurut), 2). "<br>";
+cetakArray(hitungModus($dataTerurut), "modusnya");
+echo "nilai Varians" . number_format(hitungVarians($dataTerurut), 2). "<br>";
+echo "nilai Simpangan Baku" . number_format(hitungSimpanganBaku($dataTerurut), 2). "<br>";
+cetakArray(hitungSortAsc($data), "sorting:");
+cetakArray(hitungSortDsc($data), "sorting dsc");
+echo "Hitung minimum " . number_format(hitungMinum($dataTerurut), 2). "<br>";
+echo "Hitung maximum " . number_format(hitungMaximum($dataTerurut), 2). "<br>";
 ?>
 
 </body>
