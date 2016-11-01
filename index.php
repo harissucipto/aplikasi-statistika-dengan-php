@@ -18,7 +18,7 @@
         </p>
     </form>
 
-    <form action="proses.php" method="GET">
+    <form action="proses2.php" method="GET">
 
     <? // mulai skrip php
     // ambil nilai yang telah dikirim 
