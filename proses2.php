@@ -33,6 +33,9 @@ for ($i = 1; $i <= $banyakData; $i++) {
     $indexdata++;
 }
 
+for ($i = 1; $i < $banyakData; $i++) {
+    echo $data[$i] . " <br>";
+}
 
 ?>
 
