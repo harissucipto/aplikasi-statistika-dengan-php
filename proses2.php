@@ -190,6 +190,23 @@ function hitungMaximum($datanya) {
     return max($datanya);
 }
 
+function hitungKuartil($datanya) {
+    $hBanyakData = sizeof($datanya);
+    $kuartil;
+    if ($hBanyakData % 2 != 0) {
+        if (($hBanyakData + 1) % 4 == 0) {
+            $kuartil[0] = $datanya[ ( ($hBanyakData + 1) / 4 ) - 1];
+            $kuartil[1] = $datanya[ ( 2 * ($hBanyakData + 1) / 4) - 1];
+            $kuartil[2] = $datanya[ ( 3 * ($hBanyakData + 1) / 4) - 1];
+        } else {
+            $kuartil[0] = ($datanya[ ( ($hBanyakData - 1) / 4)  - 1] + $datanya[ ( ($hBanyakData + 3) / 4)  - 1]) / 2;
+            $kuartil[1] = $datanya[( (2 * ($hBanyakData + 1) ) / 4) - 1];
+            $kuartil[2] = (($datanya[ ( ((3 * $hBanyakData) + 1) / 4) - 1] + $datanya[ (((3 * $hBanyakData) + 5) / 4) -1])) / 2;
+        }
+    }
+
+    return $kuartil;
+}
 
 
 echo "<br>";
@@ -203,6 +220,9 @@ cetakArray(hitungSortAsc($data), "sorting:");
 cetakArray(hitungSortDsc($data), "sorting dsc");
 echo "Hitung minimum " . number_format(hitungMinum($dataTerurut), 2). "<br>";
 echo "Hitung maximum " . number_format(hitungMaximum($dataTerurut), 2). "<br>";
+
+echo "<br>o";
+cetakArray(hitungKuartil($dataTerurut), "makan");
 ?>
 
 </body>
