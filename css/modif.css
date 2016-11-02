@@ -1,0 +1,11 @@
+.thumbnail {
+    border: none;
+}
+
+.jumbotron {
+    background: white;
+}
+
+.container {
+    max-width: 80%;
+}
