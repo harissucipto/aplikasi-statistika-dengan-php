@@ -108,6 +108,7 @@ sort($dataTerurut);
                                 </div>
                             </div>
                         </form>
+                        <hr>
                         <form class="form-horizontal" action="proses.1.php#jawaban" method="GET">
                             <?
                                     $inputData = $_GET[inputData];
@@ -357,83 +358,159 @@ sort($dataTerurut);
             <div class="container jumbotron">
                 <div id="jawaban">
                     <div class="row text-center">
-                        <h2>HASIL : </h2><hr>
+                        <h2>HASIL : </h2>
+                        <hr>
                     </div>
-                    <div class="row text-center">
+                    <div class="row text-left">
                         <div class="col-md-8 col-md-offset-2">
                             <?
-                        if ($mean) {
-                            echo "
-                            <div class='col-md-4'>
-                                    <div class='col-md-6'>
-                                            <h3>Mean: </h3>
-                                     </div>
-                                    <div class='col-md-6'>
-                                        <h3>" . number_format(hitungMean($dataTerurut), 2) . "</h3>
-                                    </div>
-                                </div>";
-                        }
-                         if ($median) {
-                            echo "
-                            <div class='col-md-4'>
-                                    <div class='col-md-6'>
-                                            <h3>Median: </h3>
-                                     </div>
-                                    <div class='col-md-6'>
-                                        <h3>" . number_format(hitungMedian($dataTerurut), 2) . "</h3>
-                                    </div>
-                                </div>";
-                        }
-                         if ($modus) {
-                            echo "
-                            <div class='col-md-4'>
-                                    <div class='col-md-6'>
-                                            <h3>Modus: </h3>
-                                     </div>
-                                    <div class='col-md-6'>
-                                        <h3>" . arrayKeKalimat(hitungModus($dataTerurut)) . "</h3>
-                                    </div>
-                                </div>";
-                        }
-                         if ($mean) {
-                            echo "
-                            <div class='col-md-4'>
-                                    <div class='col-md-6'>
-                                            <h3>MEAN: </h3>
-                                     </div>
-                                    <div class='col-md-6'>
-                                        <h3>" . number_format(hitungMean($dataTerurut), 2) . "</h3>
-                                    </div>
-                                </div>";
-                        }
-                         if ($mean) {
-                            echo "
-                            <div class='col-md-4'>
-                                    <div class='col-md-6'>
-                                            <h3>MEAN: </h3>
-                                     </div>
-                                    <div class='col-md-6'>
-                                        <h3>" . number_format(hitungMean($dataTerurut), 2) . "</h3>
-                                    </div>
-                                </div>";
-                        }
-                         if ($mean) {
-                            echo "
-                            <div class='col-md-4'>
-                                    <div class='col-md-6'>
-                                            <h3>MEAN: </h3>
-                                     </div>
-                                    <div class='col-md-6'>
-                                        <h3>" . number_format(hitungMean($dataTerurut), 2) . "</h3>
-                                    </div>
-                                </div>";
-                        }
+                                    if ($varians) {
+                                        echo "
+                                        <div class='col-md-12'>
+                                                <div class='col-xs-4'>
+                                                        <h3>Varian: </h3>
+                                                </div>
+                                                <div class='col-xs-8'>
+                                                    <h3>" . number_format(hitungVarians($dataTerurut), 2) . "</h3>
+                                                </div>
+                                            </div>";
+                                    }
 
-                        ?>
+                                   if ($simpanganbaku) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3>S.Baku:</h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3>" . number_format(hitungSimpanganBaku($dataTerurut), 2) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+
+                                 if ($median) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3>Median: </h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3>" . number_format(hitungMedian($dataTerurut), 2) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+
+                                    if ($minimum) {
+                                        echo "
+                                        <div class='col-md-12'>
+                                                <div class='col-xs-4'>
+                                                        <h3>Min: </h3>
+                                                </div>
+                                                <div class='col-xs-8'>
+                                                    <h3>" . number_format(hitungMinum($dataTerurut), 2) . "</h3>
+                                                </div>
+                                            </div>";
+                                    }
+                                    if ($maksimum) {
+                                        echo "
+                                        <div class='col-md-12'>
+                                                <div class='col-xs-4'>
+                                                        <h3>Max: </h3>
+                                                </div>
+                                                <div class='col-xs-8'>
+                                                    <h3>" . number_format(hitungMaximum($dataTerurut), 2) . "</h3>
+                                                </div>
+                                            </div>";
+                                    }
+
+
+                                    if ($mean) {
+                                        echo "
+                                        <div class='col-md-12'>
+                                                <div class='col-xs-4'>
+                                                        <h3>Mean: </h3>
+                                                </div>
+                                                <div class='col-xs-8'>
+                                                    <h3>" . number_format(hitungMean($dataTerurut), 2) . "</h3>
+                                                </div>
+                                            </div>";
+                                    }
+
+                                    if ($desil) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3 class='text-left'>Desil ke $desilKe: </h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3 class='text-left'>" . number_format(hitungDesil($dataTerurut, $desilKe), 2) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+
+
+                                  if ($persentil) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3 class='text-left'>Persentil ke $persentilKe: </h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3 class='text-left'>" . number_format(hitungPersentil($dataTerurut, $persentilKe), 2) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+                                if ($kuartil) { echo "
+                                <div class='col-md-12'>
+                                    <div class='col-xs-4'>
+                                        <h3 class='text-left'>Kuartil: </h3>
+                                    </div>
+                                    <div class='col-xs-8'>
+                                        <h3 class='text-left'>" . cetakQuartil(hitungKuartil($dataTerurut)) . "</h3>
+                                    </div>
+                                </div>"; }
+
+                                if ($modus) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3>Modus: </h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3 class='text-left'>" . arrayKeKalimat(hitungModus($dataTerurut)) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+                                if ($sortingAsc) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3>Srt-Asc:</h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3 class='text-left'>" . arrayKeKalimat(hitungSortAsc($dataTerurut)) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+                                if ($sortingDsc) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3>Srt-Asc:</h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3 class='text-left'>" . arrayKeKalimat(hitungSortDsc($dataTerurut)) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+
+                                ?>
+
                         </div>
-                        < </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </body>
 
 </html>

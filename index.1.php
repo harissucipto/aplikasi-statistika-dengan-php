@@ -41,7 +41,8 @@
             </div>
         </div>
         <div class='row text-center'>
-            <h2>BANYAK DATA YANG DIBUTUHKAN : </h2><hr>
+            <h2>BANYAK DATA YANG DIBUTUHKAN : </h2>
+            <hr>
         </div>
         <div id="input" class="row">
             <div class="col-md-11 text-center">
@@ -70,6 +71,7 @@
                             </div>
                         </div>
                     </form>
+                    <hr>
                     <form class="form-horizontal" action="proses.1.php#jawaban" method="GET">
                         <?
                                     $inputData = $_GET[inputData];
