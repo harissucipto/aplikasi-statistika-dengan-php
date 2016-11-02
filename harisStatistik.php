@@ -19,12 +19,26 @@ function arrayKeKalimat($datanya) {
         if ($i == (sizeof($datanya) - 1)) {
             $kalimat = $kalimat . ".";
         } else {
-            $kalimat = $kalimat . " , ";
+            $kalimat = $kalimat . ", ";
         }
     }
     return $kalimat;
 }
 
+function CetakQuartil($datanya) {
+    $kalimat = "";
+    $indexnya = 1;
+    for ($i = 0; $i < sizeof($datanya); $i++) {
+        $kalimat = $kalimat . "Q$indexnya : " . number_format($datanya[$i], 2);
+        if ($i == (sizeof($datanya) - 1)) {
+            $kalimat = $kalimat . ".";
+        } else {
+            $kalimat = $kalimat . ", ";
+        }
+        $indexnya++;
+    }
+    return $kalimat;
+}
 
 function hitungMean($datanya) {
     $mBanyakData= sizeof($datanya);
