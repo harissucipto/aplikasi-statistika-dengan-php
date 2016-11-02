@@ -8,6 +8,7 @@
 </head>
 
 <?php
+include_once("harisStatistik.php");
 $mean = $_GET[mean];
 $median = $_GET[Median];
 $modus = $_GET[Modus];
@@ -76,9 +77,12 @@ sort($dataTerurut);
                     </div>
                 </div>
             </div>
+            <div class='row text-center'>
+                <h2>BANYAK DATA YANG DIBUTUHKAN : </h2>
+                <hr>
+            </div>
             <div id="input" class="row">
                 <div class="col-md-11 text-center">
-                    <h3>Masukan Input</h3>
                     <?
                     $x = $_GET[jdata];
 
@@ -104,7 +108,7 @@ sort($dataTerurut);
                                 </div>
                             </div>
                         </form>
-                        <form class="form-horizontal" action="proses.1.php#isi" method="GET">
+                        <form class="form-horizontal" action="proses.1.php#jawaban" method="GET">
                             <?
                                     $inputData = $_GET[inputData];
                                     $jdata = $_GET[jdata];
@@ -138,7 +142,9 @@ sort($dataTerurut);
                                     echo "
         <div class='row'>
             <div class='col-xs-8 col-xs-offset-2 text-center '>
-                <h3>Pilih Operasi</h3>
+                <div class='row text-center'>
+                        <h2>PILIH OPERASI : </h2><hr>
+                </div>
                 <div class='row text-left'>
                     <div class='col-xs-12'>
                         <div class='col-xs-12 col-sm-6 col-md-4'>
@@ -295,6 +301,9 @@ sort($dataTerurut);
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        </div>
+                        <hr>
                         <div class='col-xs-12 col-sm-6 col-md-6'>
                             <div class='form-group form-group-lg'>
                                 <div class='col-xs-4'>
@@ -345,11 +354,86 @@ sort($dataTerurut);
 
                 </div>
             </div>
-            <div class="container">
+            <div class="container jumbotron">
                 <div id="jawaban">
-                    <h1>Hallo</h1>
+                    <div class="row text-center">
+                        <h2>HASIL : </h2><hr>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-8 col-md-offset-2">
+                            <?
+                        if ($mean) {
+                            echo "
+                            <div class='col-md-4'>
+                                    <div class='col-md-6'>
+                                            <h3>Mean: </h3>
+                                     </div>
+                                    <div class='col-md-6'>
+                                        <h3>" . number_format(hitungMean($dataTerurut), 2) . "</h3>
+                                    </div>
+                                </div>";
+                        }
+                         if ($median) {
+                            echo "
+                            <div class='col-md-4'>
+                                    <div class='col-md-6'>
+                                            <h3>Median: </h3>
+                                     </div>
+                                    <div class='col-md-6'>
+                                        <h3>" . number_format(hitungMedian($dataTerurut), 2) . "</h3>
+                                    </div>
+                                </div>";
+                        }
+                         if ($modus) {
+                            echo "
+                            <div class='col-md-4'>
+                                    <div class='col-md-6'>
+                                            <h3>Modus: </h3>
+                                     </div>
+                                    <div class='col-md-6'>
+                                        <h3>" . arrayKeKalimat(hitungModus($dataTerurut)) . "</h3>
+                                    </div>
+                                </div>";
+                        }
+                         if ($mean) {
+                            echo "
+                            <div class='col-md-4'>
+                                    <div class='col-md-6'>
+                                            <h3>MEAN: </h3>
+                                     </div>
+                                    <div class='col-md-6'>
+                                        <h3>" . number_format(hitungMean($dataTerurut), 2) . "</h3>
+                                    </div>
+                                </div>";
+                        }
+                         if ($mean) {
+                            echo "
+                            <div class='col-md-4'>
+                                    <div class='col-md-6'>
+                                            <h3>MEAN: </h3>
+                                     </div>
+                                    <div class='col-md-6'>
+                                        <h3>" . number_format(hitungMean($dataTerurut), 2) . "</h3>
+                                    </div>
+                                </div>";
+                        }
+                         if ($mean) {
+                            echo "
+                            <div class='col-md-4'>
+                                    <div class='col-md-6'>
+                                            <h3>MEAN: </h3>
+                                     </div>
+                                    <div class='col-md-6'>
+                                        <h3>" . number_format(hitungMean($dataTerurut), 2) . "</h3>
+                                    </div>
+                                </div>";
+                        }
+
+                        ?>
+                        </div>
+                        < </div>
+                    </div>
                 </div>
-            </div>
     </body>
 
 </html>

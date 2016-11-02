@@ -12,6 +12,19 @@ function cetakArray($datanya, $kalimat) {
     echo "<br>";
 }
 
+function arrayKeKalimat($datanya) {
+    $kalimat = "";
+    for ($i = 0; $i < sizeof($datanya); $i++) {
+        $kalimat = $kalimat . $datanya[$i];
+        if ($i == (sizeof($datanya) - 1)) {
+            $kalimat = $kalimat . ".";
+        } else {
+            $kalimat = $kalimat . " , ";
+        }
+    }
+    return $kalimat;
+}
+
 
 function hitungMean($datanya) {
     $mBanyakData= sizeof($datanya);
@@ -22,7 +35,6 @@ function hitungMean($datanya) {
     return $mJumlahData / $mBanyakData;
 }
 // test fungsi mean
-echo "<br>mean : " . hitungMean($dataTerurut);
 
 function hitungMedian($datanya) {
     // data Anda harus sudah terurut
@@ -34,7 +46,7 @@ function hitungMedian($datanya) {
     }
 }
 
-echo "<br>Median: " . hitungMedian($dataTerurut);
+
 
 function nilaiUniq($datanya) {
     $terindex = 0;

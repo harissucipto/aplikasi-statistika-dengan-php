@@ -40,9 +40,11 @@
                 </div>
             </div>
         </div>
+        <div class='row text-center'>
+            <h2>BANYAK DATA YANG DIBUTUHKAN : </h2><hr>
+        </div>
         <div id="input" class="row">
             <div class="col-md-11 text-center">
-                <h3>Masukan Input</h3>
                 <?
                     $x = $_GET[jdata];
 
@@ -102,7 +104,9 @@
                                     echo "
         <div class='row'>
             <div class='col-xs-8 col-xs-offset-2 text-center '>
-                <h3>Pilih Operasi</h3>
+                <div class='row text-center'>
+                        <h2>PILIH OPERASI : </h2><hr>
+                </div>
                 <div class='row text-left'>
                     <div class='col-xs-12'>
                         <div class='col-xs-12 col-sm-6 col-md-4'>
@@ -215,6 +219,9 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        </div>
+                        <hr>
                         <div class='col-xs-12 col-sm-6 col-md-6'>
                             <div class='form-group form-group-lg'>
                                 <div class='col-xs-4'>
