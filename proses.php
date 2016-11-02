@@ -2,318 +2,515 @@
 <html>
 
 <head>
-    <title>Aplikasi sederhana sederhana</title>
+    <title>Aplikasi Statistika Sederhana</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/modif.css">
 </head>
-<body>
-<h1>Aplikasi Statistika Sederhana</h1>
 
-<?
-// banyakdata itu namalain dari jumlahData.
-// defeniskan variabel
-$banyakData = $_GET[banyakData];
-$rataRata = $_GET[operasi];
-$median = $_GET[operasi];
-$modus = $_GET[operasi];
-$varians = $_GET[operasi];
-$simpanganbaku = $_GET[operasi];
-$sortingAsc = $_GET[operasi];
-$sortingDsc = $_GET[operasi];
-$minmax = $_GET[operasi];
-$quartil = $_GET[operasi];
-
-
-
-// karena datanya banyak kita bikin jadi satu dengan array;
-$data = [];
-?>
-
-<p>Data yang anda Masukan yaitu: </p>
-
-<?
-// mendefiniskan nilai ke  variable data sebanyak banyak data
-echo "<p><b>";
+<?php
+include_once("harisStatistik.php");
+$mean = $_GET[mean];
+$median = $_GET[Median];
+$modus = $_GET[Modus];
+$varians = $_GET[Varians];
+$simpanganbaku = $_GET[Simpangan];
+$sortingAsc = $_GET[SrtAsc];
+$sortingDsc = $_GET[SrtDsc];
+$minimum = $_GET[Minimum];
+$maksimum = $_GET[Maximum];
+$kuartil = $_GET[Kuartil];
+$desil = $_GET[Desil];
+$desilKe = $_GET[nilaiDesil];
+$persentil = $_GET[Persentil];
+$persentilKe = $_GET[nilaiPersentil];
+$grafik = $_GET[Grafik];
+echo $mean;
+// setup this
+$banyakData = $_GET[jdata];
+$data;
+//ambil perdata
+$indexdata = 0;
 for ($i = 1; $i <= $banyakData; $i++) {
     $data[$i] = $_GET["data$i"];
-    echo $data[$i];
-    if ($i != $banyakData) {
-        echo " , ";
-    } else {
-        echo ".";
-    }
-}
-echo "</b></p>";
-
-// jika memilih operasi rata - rata;
-if ($rataRata == "mean") {
-
-    // rumus rata - rata adalah jumlah keseulurahan data dibagi
-    // banyak data, jadi kita harus mendefensikan 3 variabel yakni
-    // variable hasilRata-rata, jumlah keselurahan data, dan banyak data
-    // karena banyak data telah didefenisakan(dicari)sebelumnya maka kita 
-    // perlu dua variabel yaitu untuk hasilRata-rata dan vairabel
-    // jumlah keselurahan data
-    $jumKesData = 0;
-    $hasilRatarata = 0;
-
-    // lakukan looping untuk mencari jumlah keselurahan data
-    for ($i = 1; $i <= sizeof($data); $i++) {
-        $jumKesData += $data[$i];
-    }
-
-    // baru masuakan rumus
-
-    $hasilRatarata = $jumKesData / $banyakData;
-    $outputMean = number_format($hasilRatarata, 2);
-
-    // cetak
-    echo "
-        <p>Anda Memilih operasi <b>Mean / Rata - Rata data </b></p>
-        <p>jumlah Data / banyak Data = <b>Rata - Rata</b><p>
-        <p> <b> $jumKesData / $banyakData = $outputMean</b> </p>
-
-        <p>Jadi <b>Rata - rata</b> nya adalah <b>$outputMean</b></p>
-    ";
-
-} // end rata -rata / mean
-
-if ($median == "median") {
-    echo "anda memilih median";
-    // sorting dulu sebelum melakukan operasi
-    $susun = $data;
-    $hasilMedian;
-    sort($susun);
-
-    if ($banyakData % 2 == 0) { // jika jumlahData genap 
-        $medianproses1 = (sizeof($susun) / 2) - 1; // dikurang 1 dikarenakan index mulai dari 0
-        $medianproses2 = $medianproses1 + 1;
-        $hasilMedian = ($susun[$medianproses1] + $susun[$medianproses2]) / 2;
-        $outputMedian = number_format($hasilMedian, 2);
-        echo "mediannya adalah $outputMedian";
-        
-    } else { // jika jumlahData ganjil
-        $hasilMedian = ((sizeof($susun) + 1) / 2) - 1; // dikurang 1 dikarenakan index mulai dari 0
-         $outputMedian = number_format($susun[$hasilMedian], 2);
-         echo "mediannya adalah $outputMedian"; 
-    }
-
-} // akhir operasi median.
-
-if ($modus == "modus") {
-
-    // cari kelasnya dulu
-    $salin = $data;
-    sort($salin);
-    $i = 0;
-    $index = 0;
-    $arrayBaru = [];
-    for ($x = 1; $x <= sizeof($salin); $x++) {
-        if ($salin[$i] != $salin[$x]) {
-	        $arrayBaru[$index] = $salin[$i];
-            $index++;
-	    } 
-        $i++;
-    }
-    $banyakPer = [];
-    // cari banyak data tiap kelas
-    for ($i = 0; $i < sizeof($arrayBaru); $i++) {
-        $tambah = 0;
-        for ($x = 0; $x < sizeof($salin); $x++) {
-            if ($arrayBaru[$i] == $salin[$x]) {
-                $tambah+= 1;
-            }
-        }
-        $banyakPer[$i] = $tambah;
-    }
-
-    // cari banyakPer yang palingtinggi nilainya berati modus.
-    $filterhasilModus = $banyakPer;
-    $hasilModus = [];
-    $indexModus = 0;
-    sort($filterhasilModus);
-    $nilaiPalinTinggi = sizeof($filterhasilModus) - 1;
-
-
-    // cetak modus.
-    if ($filterhasilModus[$nilaiPalinTinggi] > 1) {
-        for ($i = 0; $i < sizeof($banyakPer); $i++) {
-                if ($filterhasilModus[$nilaiPalinTinggi] == $banyakPer[$i]) {
-                    $hasilModus[$indexModus] = $arrayBaru[$i];
-                    $indexModus++;
-                }
-         }
-         echo "Modusnya yaitu: ";
-         for ($i = 0; $i < sizeof($hasilModus); $i++) {
-             if ($i == (sizeof($hasilModus) - 1)) {
-                 echo number_format($hasilModus[$i], 2)  . " .";
-             } else {
-                 echo number_format($hasilModus[$i], 2)  . " , ";
-             }
-         }
-         echo "<br>";
-    }  else {
-        echo "tidak ada modus di data ini";
-    }
-    
-    /*
-    // pengujian
-    for ($x = 0; $x < sizeof($arrayBaru); $x++) {
-        echo $arrayBaru[$x];
-    }
-    echo "<br>banyak data</br>";
-    for ($x = 0; $x < sizeof($arrayBaru); $x++) {
-        echo $banyakPer[$x];
-    }
-
-    */
-} // akhiri operasi modus
-
-// jika operasi varians
-if ($varians == "varians") {
-    // cari rata - rata
-
-    $jumKesData = 0;
-    $hasilRatarata = 0;
-    // lakukan looping untuk mencari jumlah keselurahan data
-    for ($i = 1; $i <= sizeof($data); $i++) {
-        $jumKesData += $data[$i];
-    }
-    // baru masuakan rumus
-    $hasilRatarata = $jumKesData / $banyakData;
-
-    $proses1 = 0;
-    for ($i = 1; $i <= sizeof($data); $i++) {
-        $temp = $data[$i] - $hasilRatarata;
-        $temp = $temp * $temp;
-        $proses1 += $temp;
-    }
-    
-    $hasilVarians = $proses1 / 7;
-    echo "hasil varinsinya " .  number_format($hasilVarians, 2);
-    
-
 }
 
-if ($simpanganbaku == "simpangan-baku") {
-    $jumKesData = 0;
-    $hasilRatarata = 0;
-    // lakukan looping untuk mencari jumlah keselurahan data
-    for ($i = 1; $i <= sizeof($data); $i++) {
-        $jumKesData += $data[$i];
-    }
-    // baru masuakan rumus
-    $hasilRatarata = $jumKesData / $banyakData;
-
-    $proses1 = 0;
-    for ($i = 1; $i <= sizeof($data); $i++) {
-        $temp = $data[$i] - $hasilRatarata;
-        $temp = $temp * $temp;
-        $proses1 += $temp;
-    }
-    
-    $hasilSimpanganBaku= sqrt($proses1 / 7);
-    echo "hasil simpangan baku yaitu " .  number_format($hasilSimpanganBaku, 2);
-
+$dataTerurut;
+$indexdata = 0;
+for ($i = 1; $i <= $banyakData; $i++) {
+    $dataTerurut[$indexdata] = $data[$i];
+    $indexdata++;
 }
-
-if ($sortingAsc == "sort-asc") {
-    $salin;
-    for ($i = 1; $i <= sizeof($data); $i++) {
-        $salin[$i] = $data[$i];
-    }
-    sort($salin);
-    echo " hasil sorting ASC: ";
-
-    for ($i = 0; $i < sizeof($data); $i++) {
-        echo $salin[$i];
-        if ($i < ($banyakData - 1)) {
-            echo " , ";
-        } else {
-            echo ".";
-        }
-    }
-
-}
-
-if ($sortingDsc == "sort-desc") {
-    $hasilSortingDsc;
-    for ($i = 1; $i <= sizeof($data); $i++) {
-        $hasilSortingDsc[$i] = $data[$i];
-    }
-    sort($hasilSortingDsc);
-    $hasilSortingDsc= array_reverse($hasilSortingDsc);
-    echo " hasil sorting DSC: ";
-
-    for ($i = 0; $i < sizeof($data); $i++) {
-        echo $hasilSortingDsc[$i];
-        if ($i < ($banyakData - 1)) {
-            echo " , ";
-        } else {
-            echo ".";
-        }
-    }
-
-}
-
-if ($minmax == "min-max") {
-    $x = 0;
-    $arraySalin;
-    for ($i = 1; $i <= sizeof($data); $i++) {
-        if ($i >= 1) {
-            $arraySalin[$x] = $data[$i];
-            $x++;
-        }
-    }
-    sort($arraySalin);
-    $hasilMin = $arraySalin[0];
-    $hasilMax = $arraySalin[$banyakData - 1];
-    echo "NIlai Min : " . $hasilMin;
-    echo "<br>Nilai Max: " . $hasilMax;
-
-}
-
-if ($quartil == "quartil") {
-    $x = 0;
-    $arraySalin;
-   
-    for ($i = 1; $i <= sizeof($data); $i++) {
-        if ($i >= 1) {
-            $arraySalin[$x] = $data[$i];
-            $x++;
-        }
-    }
-
-    sort($arraySalin);
-    $tempBanyakData = sizeof($arraySalin);
-    echo $tempBanyakData . " ";
-
-    if ($tempBanyakData % 2 != 0) {
-        $hasilQ1 = $arraySalin[((1 * ($tempBanyakData  + 1)) / 4) - 1];
-        $hasilQ2 = $arraySalin[((2 * ($tempBanyakData  + 1)) / 4) - 1];
-        $hasilQ3 = $arraySalin[((3 * ($tempBanyakData  + 1)) / 4) - 1];
-
-
-        echo "hasil quartil ke 1 = " . number_format($hasilQ1, 2);
-        echo "<br>hasil quartl ke 2 = " . number_format($hasilQ2, 2);
-        echo "<br>hasil quartil ke 3 = " . number_format($hasilQ3, 2);
-
-        
-    } else {
-       
-        $hasilQ2 = ($arraySalin[($tempBanyakData / 2) - 1] + $arraySalin[($tempBanyakData / 2 + 1) - 1]) /2;
-        $hasilQ3 = ($arraySalin[(3 * $tempBanyakData  / 4) - 1] + $arraySalin[((3 * $tempBanyakData  / 4)+ 1) - 1]) / 2;
-
-
-        echo "hasil quartil ke 1 = " . number_format($hasilQ1, 2);
-        echo "<br>hasil quartl ke 2 = " . number_format($hasilQ2, 2);
-        echo "<br>hasil quartil ke 3 = " . number_format($hasilQ3, 2);
-    }
-}
-
-echo  "
-    <p><a href='index.php'>Kembali ke Menu</a></p>
-";
+sort($dataTerurut);
 
 ?>
 
-</body>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <a href="index.php">
+                                <h1>Aplikasi Statistika Sederhana</h1>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <h3>Dibuat Oleh:</h3>
+                        <div class="row">
+                            <div class="col-md-4 col-xs-4">
+                                <div class="thumbnail">
+                                    <img src="images/profil1.jpg" class="img-circle small" width="150px">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <div class="thumbnail">
+                                    <img src="images/profil1.jpg" class="img-circle" width="150px">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <div class="thumbnail">
+                                    <img src="images/profil1.jpg" class="img-circle" width="150px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='row text-center'>
+                <h2>BANYAK DATA YANG DIBUTUHKAN : </h2>
+                <hr>
+            </div>
+            <div id="input" class="row">
+                <div class="col-md-11 text-center">
+                    <?
+                    $x = $_GET[jdata];
+
+
+                ?>
+                        <br>
+                        <form class="form-horizontal" action="index.php#input" method="GET">
+                            <div class="form-group form-group-lg">
+                                <div class="col-xs-3 control-label" for="jdata">
+                                    <h3 class='khusus'>Jumlah Data</h3>
+                                </div>
+                                <div class="col-xs-6">
+                                    <?
+                                    if ($x) {
+                                         echo "<input class='form-control' type='number' id='jdata' name='jdata' value='$x'>";
+                                    } else {
+                                        echo "<input class='form-control' type='number' id='jdata' name='jdata' placeholder='Masukan Banyak Data'>";
+                                    }
+                                ?>
+                                </div>
+                                <div class="col-xs-3">
+                                    <input class="btn btn-default btn-primary btn-lg btn-block" type="submit" id="formGroupInputLarge" value='OK' name="inputData">
+                                </div>
+                            </div>
+                        </form>
+                        <hr>
+                        <form class="form-horizontal" action="proses.php#jawaban" method="GET">
+                            <?
+                                    $inputData = $_GET[inputData];
+                                    $jdata = $_GET[jdata];
+                                    echo "
+                                        <input type='hidden' name='jdata' value='$jdata'>
+                                    ";
+                                    
+                            if ($jdata > 0) {
+                                // lakukan pengulangan sebanyak data yang akan dimasukan
+                                for ($i = 1; $i <= $jdata; $i++) { 
+                                    echo "
+                                            <div class='form-group form-group-lg'>
+                                            <div class='col-xs-3 control-label' for='data$i'><h3 class='khusus' >Data ke $i</h3></div>
+                                            <div class='col-xs-9'>
+                                            <input class='form-control' type='number' id='data$i'name='data$i' value='$data[$i]'>
+                                            </div>
+                                            </div>
+                                    "; // akhir echo
+                                } // akhir pengulangan
+                            } 
+                            ?>
+
+                </div>
+                <div>
+                    <?
+                                    $inputData = $_GET[inputData];
+                                    $jdata = $_GET[jdata];
+                                    
+                            if ($jdata > 0) {
+                                // lakukan pengulangan sebanyak data yang akan dimasukan
+                                    echo "
+        <div class='row'>
+            <div class='col-xs-8 col-xs-offset-2 text-center '>
+                <div class='row text-center'>
+                        <h2>PILIH OPERASI : </h2><hr>
+                </div>
+                <div class='row text-left'>
+                    <div class='col-xs-12'>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='mean' name='mean'"; 
+                                    if ($mean) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>Mean</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='Median' name='Median'";
+                                    if ($median) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>Median</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='Modus' name='Modus'";
+                                    if ($modus) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>Modus</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='Varians' name='Varians'";
+                                    if ($varians) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>Varians</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='Simpangan' name='Simpangan'";
+                                    if ($simpanganbaku) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>S. Baku</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='SrtAsc' name='SrtAsc'";
+                                    if ($sortingAsc) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>Srt-Asc</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='SrtDsc' name='SrtDsc'";
+                                    if ($sortingDsc) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>Srt-Dsc</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='mean' name='Minimum'";
+                                    if ($minimum) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>Minimum</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='mean' name='Maximum'";
+                                    if ($maksimum) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>Maximum</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='mean' name='Kuartil'";
+                                    if ($kuartil) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>Kuartil</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-4'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='mean' name='Grafik'";
+                                    if ($grafik) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-8 control-label' for='data$i'>
+                                    <h3>Grafik</h3>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        <hr>
+                        <div class='col-xs-12 col-sm-6 col-md-6'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='mean' name='Desil'";
+                                    if ($desil) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-4 control-label' for='data$i'>
+                                    <h3>Desil Ke: </h3>
+                                </div>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='number' id='mean' name='nilaiDesil' value='". $desilKe ."'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-12 col-sm-6 col-md-6'>
+                            <div class='form-group form-group-lg'>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='checkbox' id='mean' name='Persentil'";
+                                    if ($persentil) {
+                                        echo "checked";
+                                    }
+                                    echo ">
+                                </div>
+                                <div class='col-xs-4 control-label' for='data$i'>
+                                    <h3>Prsntil Ke: </h3>
+                                </div>
+                                <div class='col-xs-4'>
+                                    <input class='form-control' type='number' id='mean' name='nilaiPersentil' value='". $persentilKe ."'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class 'row'>
+                        <input class='btn btn-primary btn-lg btn-block' type='submit' id='formGroupInputLarge' name='proses' value='PROSES'>
+                        </form>
+                    </div>
+            </div>
+            </div>";
+                                    
+                            };
+
+                                ?>
+
+                </div>
+            </div>
+            <div class="container jumbotron">
+                <div id="jawaban">
+                    <div class="row text-center">
+                        <h2>HASIL : </h2>
+                        <hr>
+                    </div>
+                    <div class="row text-left">
+                        <div class="col-md-8 col-md-offset-2">
+                            <?
+                                    if ($varians) {
+                                        echo "
+                                        <div class='col-md-12'>
+                                                <div class='col-xs-4'>
+                                                        <h3>Varian: </h3>
+                                                </div>
+                                                <div class='col-xs-8'>
+                                                    <h3>" . number_format(hitungVarians($dataTerurut), 2) . "</h3>
+                                                </div>
+                                            </div>";
+                                    }
+
+                                   if ($simpanganbaku) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3>S.Baku:</h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3>" . number_format(hitungSimpanganBaku($dataTerurut), 2) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+
+                                 if ($median) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3>Median: </h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3>" . number_format(hitungMedian($dataTerurut), 2) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+
+                                    if ($minimum) {
+                                        echo "
+                                        <div class='col-md-12'>
+                                                <div class='col-xs-4'>
+                                                        <h3>Min: </h3>
+                                                </div>
+                                                <div class='col-xs-8'>
+                                                    <h3>" . number_format(hitungMinum($dataTerurut), 2) . "</h3>
+                                                </div>
+                                            </div>";
+                                    }
+                                    if ($maksimum) {
+                                        echo "
+                                        <div class='col-md-12'>
+                                                <div class='col-xs-4'>
+                                                        <h3>Max: </h3>
+                                                </div>
+                                                <div class='col-xs-8'>
+                                                    <h3>" . number_format(hitungMaximum($dataTerurut), 2) . "</h3>
+                                                </div>
+                                            </div>";
+                                    }
+
+
+                                    if ($mean) {
+                                        echo "
+                                        <div class='col-md-12'>
+                                                <div class='col-xs-4'>
+                                                        <h3>Mean: </h3>
+                                                </div>
+                                                <div class='col-xs-8'>
+                                                    <h3>" . number_format(hitungMean($dataTerurut), 2) . "</h3>
+                                                </div>
+                                            </div>";
+                                    }
+
+                                    if ($desil) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3 class='text-left'>Desil ke $desilKe: </h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3 class='text-left'>" . number_format(hitungDesil($dataTerurut, $desilKe), 2) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+
+
+                                  if ($persentil) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3 class='text-left'>Persentil ke $persentilKe: </h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3 class='text-left'>" . number_format(hitungPersentil($dataTerurut, $persentilKe), 2) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+                                if ($kuartil) { echo "
+                                <div class='col-md-12'>
+                                    <div class='col-xs-4'>
+                                        <h3 class='text-left'>Kuartil: </h3>
+                                    </div>
+                                    <div class='col-xs-8'>
+                                        <h3 class='text-left'>" . cetakQuartil(hitungKuartil($dataTerurut)) . "</h3>
+                                    </div>
+                                </div>"; }
+
+                                if ($modus) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3>Modus: </h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3 class='text-left'>" . arrayKeKalimat(hitungModus($dataTerurut)) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+                                if ($sortingAsc) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3>Srt-Asc:</h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3 class='text-left'>" . arrayKeKalimat(hitungSortAsc($dataTerurut)) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+                                if ($sortingDsc) {
+                                    echo "
+                                    <div class='col-md-12'>
+                                            <div class='col-xs-4'>
+                                                    <h3>Srt-Asc:</h3>
+                                            </div>
+                                            <div class='col-xs-8'>
+                                                <h3 class='text-left'>" . arrayKeKalimat(hitungSortDsc($dataTerurut)) . "</h3>
+                                            </div>
+                                        </div>";
+                                }
+
+                                ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
 </html>
