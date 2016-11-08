@@ -51,7 +51,7 @@ sort($dataTerurut);
                     <div class="col-md-12">
                         <div class="text-center">
                             <a href="index.php">
-                                <h1>Aplikasi Statistika Sederhana</h1>
+                                <h1 class="text-center">Aplikasi Statistika Sederhana</h1>
                             </a>
                         </div>
                     </div>
@@ -78,8 +78,8 @@ sort($dataTerurut);
                 </div>
             </div>
             <div class='row text-center'>
-                <h2>BANYAK DATA YANG DIBUTUHKAN : </h2>
-                <hr>
+                <h3>BANYAK DATA YANG DIBUTUHKAN : </h3>
+             
             </div>
             <div id="input" class="row">
                 <div class="col-md-11 text-center">
@@ -108,7 +108,7 @@ sort($dataTerurut);
                                 </div>
                             </div>
                         </form>
-                        <hr>
+                        
                         <form class="form-horizontal" action="proses.php#jawaban" method="GET">
                             <?
                                     $inputData = $_GET[inputData];

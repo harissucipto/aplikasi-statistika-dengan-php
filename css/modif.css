@@ -6,6 +6,28 @@
     background: white;
 }
 
-h3.khsusus {
+h3 .khsusus {
     margin-top: 0px;
+}
+
+div #header {
+    color: #337ab7;
+    border-bottom: 4px dashed #337ab7;
+    border-top: 4px dashed #337ab7;
+}
+
+img {
+    border: 4px solid #337ab7;
+}
+
+body {
+    color: #337ab7;
+}
+
+hr {
+    border-bottom: 4px dashed #337ab7;
+}
+
+form {
+    color: #337ab7;
 }

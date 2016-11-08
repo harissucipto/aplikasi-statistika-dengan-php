@@ -9,12 +9,12 @@
 
 <body>
     <div class="container">
-        <div class="jumbotron">
+        <div id="header" class="jumbotron">
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
                         <a href="index.php">
-                            <h1>Aplikasi Statistika Sederhana</h1>
+                            <h1 class="warna">Aplikasi Statistika Sederhana</h1>
                         </a>
                     </div>
                 </div>
@@ -38,11 +38,12 @@
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
         </div>
         <div class='row text-center'>
-            <h2>BANYAK DATA YANG DIBUTUHKAN : </h2>
-            <hr>
+            <h3>BANYAK DATA YANG DIBUTUHKAN : </h3>
+
         </div>
         <div id="input" class="row">
             <div class="col-md-11 text-center">
@@ -53,7 +54,7 @@
                 ?>
                     <br>
                     <form class="form-horizontal" action="index.php#input" method="GET">
-                        <div class="form-group form-group-lg">
+                        <div id="kedua" class="form-group form-group-lg">
                             <div class="col-xs-3 control-label" for="jdata">
                                 <h3 class='khusus'>Jumlah Data</h3>
                             </div>
@@ -71,7 +72,6 @@
                             </div>
                         </div>
                     </form>
-                    <hr>
                     <form class="form-horizontal" action="proses.php#jawaban" method="GET">
                         <?
                                     $inputData = $_GET[inputData];
