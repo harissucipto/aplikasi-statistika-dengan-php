@@ -267,6 +267,7 @@
 
             </div>
         </div>
+        <script type="text/javascript" src="js/tampilan.js"></script>
 </body>
 
 </html>
