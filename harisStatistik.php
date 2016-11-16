@@ -95,6 +95,22 @@ function banyakPerKelas($datanya) {
     return $banyakPerkelasDatanya;
 }
 
+function HitungPerkelasG($datanya) {
+    $kelasnya = banyakPerKelas($datanya);
+    $formatSatuArray;
+    for ($i = 0; $i < sizeof($kelasnya); $i++) {
+        $formatSatuArray[0][$i] = $kelasnya[$i][0];
+        $formatSatuArray[1][$i] = $kelasnya[$i][1];
+    }
+    return $formatSatuArray;
+}
+
+$datab = [1, 2, 3, 4];
+$baruk = HitungPerkelasG($datab);
+for ($i = 0; $i < sizeof($baruk[0]); $i++) {
+    echo $baruk[1][$i];
+}
+
 function palingBanyak($datanya) {
     $perData = banyakPerKelas($datanya);
     $nilaiPalingBanyak = 0;
@@ -144,6 +160,7 @@ function salinArray($datanya) {
     }
     return $lokasinya;
 }
+
 
 function hitungSortAsc($datanya) {
     $salinData = salinArray($datanya);

@@ -5,6 +5,7 @@
     <title>Aplikasi Statistika Sederhana</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/modif.css">
+    <script src="js/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
@@ -23,17 +24,17 @@
                     <div class="row">
                         <div class="col-md-4 col-xs-4">
                             <div class="thumbnail">
-                                <img src="images/profil1.jpg" class="img-circle small" width="150px">
+                                <img src="images/AGUNG.png" class="img-circle small" width="150px">
                             </div>
                         </div>
                         <div class="col-md-4 col-xs-4">
                             <div class="thumbnail">
-                                <img src="images/profil1.jpg" class="img-circle" width="150px">
+                                <img src="images/HARIS.PNG" class="img-circle" width="150px">
                             </div>
                         </div>
                         <div class="col-md-4 col-xs-4">
                             <div class="thumbnail">
-                                <img src="images/profil1.jpg" class="img-circle" width="150px">
+                                <img src="images/MEFPRI.PNG" class="img-circle" width="150px">
                             </div>
                         </div>
                     </div>

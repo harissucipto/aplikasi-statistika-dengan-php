@@ -5,6 +5,8 @@
     <title>Aplikasi Statistika Sederhana</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/modif.css">
+   
+    <script src="js/jquery-1.11.1.min.js"></script>
 </head>
 
 <?php
@@ -24,7 +26,7 @@ $desilKe = $_GET[nilaiDesil];
 $persentil = $_GET[Persentil];
 $persentilKe = $_GET[nilaiPersentil];
 $grafik = $_GET[Grafik];
-echo $mean;
+
 // setup this
 $banyakData = $_GET[jdata];
 $data;
@@ -60,17 +62,17 @@ sort($dataTerurut);
                         <div class="row">
                             <div class="col-md-4 col-xs-4">
                                 <div class="thumbnail">
-                                    <img src="images/profil1.jpg" class="img-circle small" width="150px">
+                                    <img src="images/AGUNG.PNG" class="img-circle small" width="150px">
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-4">
                                 <div class="thumbnail">
-                                    <img src="images/profil1.jpg" class="img-circle" width="150px">
+                                    <img src="images/HARIS.PNG" class="img-circle" width="150px">
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-4">
                                 <div class="thumbnail">
-                                    <img src="images/profil1.jpg" class="img-circle" width="150px">
+                                    <img src="images/MEFPRI.PNG" class="img-circle" width="150px">
                                 </div>
                             </div>
                         </div>
@@ -496,7 +498,7 @@ sort($dataTerurut);
                                     echo "
                                     <div class='col-md-12'>
                                             <div class='col-xs-4'>
-                                                    <h3>Srt-Asc:</h3>
+                                                    <h3>Srt-Dsc:</h3>
                                             </div>
                                             <div class='col-xs-8'>
                                                 <h3 class='text-left'>" . arrayKeKalimat(hitungSortDsc($dataTerurut)) . "</h3>
@@ -507,6 +509,29 @@ sort($dataTerurut);
                                 ?>
 
                         </div>
+                    </div>
+                    <div id="jawaban">
+                    <div class="row text-center">
+                    <div class="col-md-12">
+                    <?
+                        if ($grafik) {
+                            echo " <div class='row text-center'>
+                                    <hr>
+                                    <h2>GRAFIK : </h2>
+                                    </div>";
+                        }
+                    ?>  
+                    </div> 
+                        <?php
+                        if ($grafik) {
+                            include('createjpgraph.php');
+                            GenGraph($dataTerurut);
+
+                            echo "<img src='images/file.jpg'>";
+                        }
+                        
+                        ?>
+                        
                     </div>
                 </div>
             </div>
