@@ -527,7 +527,7 @@ sort($dataTerurut);
                             include('createjpgraph.php');
                             GenGraph($dataTerurut);
 
-                            echo "<img src='images/file.jpg'>";
+                            echo "<img class='rubah' src='images/file.jpg'>";
                         }
                         
                         ?>
