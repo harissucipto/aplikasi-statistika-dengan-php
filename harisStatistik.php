@@ -198,7 +198,6 @@ function hitungKuartil($datanya) {
         }
     } else {
         if ($hBanyakData % 4 == 0) {
-            echo "disni";
             $kuartil[0] = ($datanya[(($hBanyakData + 3) / 4) - 1] + $datanya[(($hBanyakData + 4) / 4) - 1]) / 2;
             $kuartil[1] = ($datanya[ (2 * ($hBanyakData + 1) / 4) - 1] + $datanya[ (2 * ($hBanyakData + 1) / 4)]) / 2;
             $kuartil[2] = ($datanya[ ( (3 * $hBanyakData + 2) / 4 ) - 1] + $datanya[ ( (3 * $hBanyakData + 2) / 4 )]) / 2;

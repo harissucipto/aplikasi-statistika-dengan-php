@@ -1,4 +1,5 @@
 var nasi = document.querySelector("#jdata");
+var mean = document.querySelectorAll("#mean");
 nasi.style.fontSize = "25px";
 nasi.style.fontWeight = "bolder";
 
@@ -8,3 +9,8 @@ for (var i = 1; i <= nasi.value; i++) {
     ubah.style.fontSize = "25px";
     ubah.style.fontWeight = "bolder";
 };
+
+for (var i = 0; i < mean.length; i++) {
+    mean[i].style.fontSize = "25px";
+    mean[i].style.fontWeight = "bolder";
+}
